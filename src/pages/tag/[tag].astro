@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+
+import ContactCTA from "../../components/ContactCTA.astro";
+import PicturePreview from "../../components/PicturePreview.astro";
+import Hero from "../../components/Hero.astro";
+import Grid from "../../components/Grid.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("picture");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
+
+  return uniqueTags.map((tag) => {
+    let filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
+
+    filteredPosts.sort((a, b) => b.data.sequence - a.data.sequence);
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+<BaseLayout title={tag} description="标签页">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <main class="wrapper stack gap-8">
+      <Hero title="生活随记" tagline="我的生活照片和精彩瞬间" align="start" />
+      <Grid variant="offset">
+        {
+          posts.map((project) => (
+            <li>
+              <PicturePreview project={project} />
+            </li>
+          ))
+        }
+      </Grid>
+    </main>
+    <ContactCTA />
+  </div>
+</BaseLayout>

@@ -1,0 +1,280 @@
+---
+import { getCollection } from "astro:content";
+
+// Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+// Component Imports
+import CallToAction from "../components/CallToAction.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import Icon from "../components/Icon.astro";
+import Pill from "../components/Pill.astro";
+import PicturePreview from "../components/PicturePreview.astro";
+import TechniquePreview from "../components/TechniquePreview.astro";
+import { base } from "../components/BaseURL.astro";
+
+// Page section components
+import ContactCTA from "../components/ContactCTA.astro";
+import Skills from "../components/Skills.astro";
+
+// Content Fetching: List four most recent work projects
+const selectedCards = 2;
+const pictures = await getCollection("picture");
+var selectedPictures = pictures.slice(
+  Math.floor(Math.random() * (pictures.length - selectedCards + 1)),
+);
+const techniques = await getCollection("technique");
+var selectedTechniques = techniques.slice(
+  Math.floor(Math.random() * (techniques.length - selectedCards + 1)),
+);
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<BaseLayout>
+  <div class="stack gap-20 lg:gap-48">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <Hero
+          title="我是罗粟海，一个永远充满好奇心的多面体。"
+          tagline="Try EveryThing Is My Motto!"
+          align="start"
+        >
+          <div class="roles">
+            <Pill>
+              <Icon icon="code" size="1.33em" /> 程序员
+            </Pill>
+            <Pill>
+              <Icon icon="write" size="1.33em" /> 诗人
+            </Pill>
+            <Pill>
+              <Icon icon="switch-logo" size="1.33em" /> 主机
+            </Pill>
+            <Pill>
+              <Icon icon="mind" size="1.33em" /> 创意
+            </Pill>
+          </div>
+        </Hero>
+
+        <img
+          alt="我的头像"
+          width="480"
+          height="620"
+          src={`${base}/assets/index/封面头像.jpg`}
+        />
+      </header>
+      <Skills />
+    </div>
+
+    <main class="wrapper stack gap-20 lg:gap-48">
+      <section class="section with-background with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>我的作品</h3>
+          <p>随机展示一些我作品吧~</p>
+        </header>
+
+        <div class="gallery">
+          <Grid variant="offset">
+            <li>
+              <TechniquePreview project={selectedTechniques[0]} />
+            </li>
+            <li>
+              <TechniquePreview project={selectedTechniques[1]} />
+            </li>
+            <li>
+              <PicturePreview project={selectedPictures[0]} />
+            </li>
+            <li>
+              <PicturePreview project={selectedPictures[1]} />
+            </li>
+          </Grid>
+        </div>
+
+        <div class="cta">
+          <CallToAction href="/profile/">
+            随机挑选
+            <Icon icon="random" size="1.2em" />
+          </CallToAction>
+        </div>
+      </section>
+
+      <section class="section with-background bg-variant">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>奇思妙想</h3>
+          <p>可可爱爱没有脑袋，火星撞地球，释放天马行空的想象力吧！</p>
+        </header>
+
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              [
+                "既生瑜，何生亮",
+                "（灰色：写下你的感想）__________————————ip地址，日期时间",
+                "没想到你是这样的程序猿",
+                "上面三个固定，下面随机展示，存储",
+                "awwwards.",
+                "TechCrunch",
+                "Medium",
+                "BuzzFeed",
+                "The Next Web",
+              ].map((brand) => (
+                <li class="mention-card">
+                  <p>{brand}</p>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+    </main>
+
+    <ContactCTA />
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .roles {
+    display: none;
+  }
+
+  .hero img {
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (min-width: 50em) {
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
+
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .hero img {
+      aspect-ratio: 3 / 4;
+      border-radius: 4.5rem;
+      object-fit: cover;
+    }
+  }
+
+  /* ====================================================== */
+
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .with-background {
+    position: relative;
+  }
+
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
+
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url("/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
+
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
+
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    max-width: 50ch;
+    font-size: var(--text-md);
+    color: var(--gray-300);
+  }
+
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 5rem;
+    }
+
+    .section.with-cta {
+      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+    }
+
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
+
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
+
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
+
+    .gallery {
+      grid-area: gallery;
+    }
+
+    .cta {
+      grid-area: cta;
+    }
+  }
+
+  /* ====================================================== */
+
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
+</style>

@@ -6,6 +6,7 @@ description: |
   无
 tags:
   - AI
+belonging: technique
 ---
 ![思维导图](/profile/assets/technique/AI生成器汇总/1.jpg)
 拖动到新窗口后查看放大图片。

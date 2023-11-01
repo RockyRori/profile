@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { base } from "../../components/BaseURL.astro";
 
-const allPosts = await getCollection("picture");
+const picture = await getCollection("picture","picture");
+const technique = await getCollection("technique","technique");
+const allPosts = picture.concat( technique )
 
 let tagCounts: { [key: string]: number } = {};
 allPosts.forEach((post) => {

@@ -8,6 +8,7 @@ tags:
   - Golang
   - JSON
   - Sonic
+belonging: technique
 ---
 
 #### 背景介绍

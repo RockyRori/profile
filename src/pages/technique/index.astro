@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 import ContactCTA from "../../components/ContactCTA.astro";
-import TechniquePreview from "../../components/TechniquePreview.astro";
+import PostsPreview from "../../components/PostsPreview.astro";
 import Hero from "../../components/Hero.astro";
 import Grid from "../../components/Grid.astro";
 
@@ -21,7 +21,7 @@ const projects = (await getCollection("technique")).sort(
         {
           projects.map((project) => (
             <li>
-              <TechniquePreview project={project} />
+              <PostsPreview project={project} />
             </li>
           ))
         }

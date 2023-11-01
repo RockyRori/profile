@@ -6,6 +6,7 @@ description: |
   无
 tags:
   - GPT
+belonging: technique
 ---
 
 ### 背景说明

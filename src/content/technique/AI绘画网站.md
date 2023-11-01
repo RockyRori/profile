@@ -6,6 +6,7 @@ description: |
   无
 tags:
   - GPT
+belonging: technique
 ---
 　　随机面部生成器 https://this-person-does-not-exist.com/zh 免费使用
 

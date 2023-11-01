@@ -7,6 +7,7 @@ description: |
 tags:
   - AI
   - GPT
+belonging: technique
 ---
 
 #### 前期准备

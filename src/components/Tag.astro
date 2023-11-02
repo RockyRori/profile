@@ -10,6 +10,7 @@ const name = Astro.props.tag;
 <a href={`${base}/tag/${name}/`}>
   <div class="tag">
     {name}
+    <slot />
   </div>
 </a>
 

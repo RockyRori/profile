@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import { base } from "./BaseURL.astro";
 
 interface Props {
@@ -11,12 +11,7 @@ const { data, slug } = Astro.props.project;
 
 <a class="card" href={`${base}/${data.belonging}/${slug}/`}>
   <span class="title">{data.title}</span>
-  <img
-    src={data.img}
-    alt=""
-    loading="lazy"
-    decoding="async"
-  />
+  <img src={data.img} alt="" loading="lazy" decoding="async" />
 </a>
 
 <style>

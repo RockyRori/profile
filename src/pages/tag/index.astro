@@ -1,12 +1,11 @@
 ---
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { base } from "../../components/BaseURL.astro";
 import Tag from "../../components/Tag.astro";
 
-const picture = await getCollection("picture", "picture");
-const technique = await getCollection("technique", "technique");
-const allPosts = picture.concat(technique);
+const picture: any = await getCollection("picture");
+const technique: any = await getCollection("technique");
+const allPosts: CollectionEntry<"posts">[] = picture.concat(technique);
 
 let tagCounts: { [key: string]: number } = {};
 allPosts.forEach((post) => {

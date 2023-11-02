@@ -10,8 +10,7 @@ import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
 import Pill from "../components/Pill.astro";
-import PicturePreview from "../components/PicturePreview.astro";
-import TechniquePreview from "../components/TechniquePreview.astro";
+import PostsPreview from "../components/PostsPreview.astro";
 import { base } from "../components/BaseURL.astro";
 
 // Page section components
@@ -78,16 +77,16 @@ var selectedTechniques = techniques.slice(
         <div class="gallery">
           <Grid variant="offset">
             <li>
-              <TechniquePreview project={selectedTechniques[0]} />
+              <PostsPreview project={selectedTechniques[0]} />
             </li>
             <li>
-              <TechniquePreview project={selectedTechniques[1]} />
+              <PostsPreview project={selectedTechniques[1]} />
             </li>
             <li>
-              <PicturePreview project={selectedPictures[0]} />
+              <PostsPreview project={selectedPictures[0]} />
             </li>
             <li>
-              <PicturePreview project={selectedPictures[1]} />
+              <PostsPreview project={selectedPictures[1]} />
             </li>
           </Grid>
         </div>

@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: AI绘画网站
 publishDate: 2023-04-12 14:52:00
 img: /profile/assets/technique/AI绘画网站/封面.jpg
@@ -6,7 +7,6 @@ description: |
   无
 tags:
   - GPT
-belonging: technique
 ---
 　　随机面部生成器 https://this-person-does-not-exist.com/zh 免费使用
 

@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: AutoGPT使用体验
 publishDate: 2023-05-06 16:39:00
 img: /profile/assets/technique/AutoGPT使用体验/封面.jpg
@@ -7,7 +8,6 @@ description: |
 tags:
   - AI
   - GPT
-belonging: technique
 ---
 
 #### 前期准备

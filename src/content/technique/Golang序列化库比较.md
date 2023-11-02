@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: Golang序列化库比较
 publishDate: 2023-07-17 14:02:00
 img: /profile/assets/technique/Golang序列化库比较/封面.jpg
@@ -8,7 +9,6 @@ tags:
   - Golang
   - JSON
   - Sonic
-belonging: technique
 ---
 
 #### 背景介绍
@@ -35,7 +35,8 @@ import (
 )
 
 type Book struct {
-	Name   string `json:"Title"`
+	Name   string `json:"belonging: technique
+title"`
 	Price  float64
 	Tags   []string
 	Press  string
@@ -47,7 +48,8 @@ type People struct {
 	Age     int
 	School  string
 	Company string
-	Title   string
+	belonging: technique
+title   string
 }
 
 var (
@@ -56,7 +58,8 @@ var (
 		Age:     18,
 		School:  "中国政法大学",
 		Company: "*大法考",
-		Title:   "*业律师",
+		belonging: technique
+title:   "*业律师",
 	}
 	book = Book{
 		Name:   "一千零一夜",

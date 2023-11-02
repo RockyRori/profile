@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: Go语言实现无侵入埋点
 publishDate: 2023-04-13 09:41:00
 img: /profile/assets/technique/Go语言实现无侵入埋点/封面.jpg
@@ -7,7 +8,6 @@ description: |
 tags:
   - 可观测性
   - 探针
-belonging: technique
 ---
 
 　　原文为全英文论文，我先自己阅读一遍，再根据自己的理解翻译解读。https://docs.google.com/document/d/1jMzCrr1vIEWvv-PJG9XiqJ6BGIB1wq4tvwyP4XL9lOI/mobilebasic

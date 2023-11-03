@@ -35,8 +35,7 @@ import (
 )
 
 type Book struct {
-	Name   string `json:"belonging: technique
-title"`
+	Name   string `json:"Title"`
 	Price  float64
 	Tags   []string
 	Press  string
@@ -48,8 +47,7 @@ type People struct {
 	Age     int
 	School  string
 	Company string
-	belonging: technique
-title   string
+	Title   string
 }
 
 var (
@@ -58,8 +56,7 @@ var (
 		Age:     18,
 		School:  "中国政法大学",
 		Company: "*大法考",
-		belonging: technique
-title:   "*业律师",
+		Title:   "*业律师",
 	}
 	book = Book{
 		Name:   "一千零一夜",

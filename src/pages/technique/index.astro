@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
@@ -8,8 +8,10 @@ import PostsPreview from "../../components/PostsPreview.astro";
 import Hero from "../../components/Hero.astro";
 import Grid from "../../components/Grid.astro";
 
-const projects = (await getCollection("technique")).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+const projects: any = await getCollection("technique");
+const posts: CollectionEntry<"posts">[] = projects.sort(
+  (a: CollectionEntry<"posts">, b: CollectionEntry<"posts">) =>
+    b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
 
@@ -19,7 +21,7 @@ const projects = (await getCollection("technique")).sort(
       <Hero title="技术博客" tagline="我学习编程路上的经验技巧" align="start" />
       <Grid variant="offset">
         {
-          projects.map((project) => (
+          posts.map((project) => (
             <li>
               <PostsPreview project={project} />
             </li>

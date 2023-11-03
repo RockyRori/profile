@@ -18,14 +18,14 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
 
 // Content Fetching: List four most recent work projects
-const selectedCards = 2;
-const pictures: any = await getCollection("picture");
-var selectedPictures: CollectionEntry<"posts">[] = pictures.slice(
-  Math.floor(Math.random() * (pictures.length - selectedCards + 1)),
+const selectedCard = 2;
+const picture: any = await getCollection("picture");
+var selectedPicture: CollectionEntry<"posts">[] = picture.slice(
+  Math.floor(Math.random() * (picture.length - selectedCard + 1)),
 );
-const techniques: any = await getCollection("technique");
-var selectedTechniques: CollectionEntry<"posts">[] = techniques.slice(
-  Math.floor(Math.random() * (techniques.length - selectedCards + 1)),
+const technique: any = await getCollection("technique");
+var selectedTechnique: CollectionEntry<"posts">[] = technique.slice(
+  Math.floor(Math.random() * (technique.length - selectedCard + 1)),
 );
 
 // Full Astro Component Syntax:
@@ -77,16 +77,16 @@ var selectedTechniques: CollectionEntry<"posts">[] = techniques.slice(
         <div class="gallery">
           <Grid variant="offset">
             <li>
-              <PostsPreview project={selectedTechniques[0]} />
+              <PostsPreview project={selectedTechnique[0]} />
             </li>
             <li>
-              <PostsPreview project={selectedTechniques[1]} />
+              <PostsPreview project={selectedTechnique[1]} />
             </li>
             <li>
-              <PostsPreview project={selectedPictures[0]} />
+              <PostsPreview project={selectedPicture[0]} />
             </li>
             <li>
-              <PostsPreview project={selectedPictures[1]} />
+              <PostsPreview project={selectedPicture[1]} />
             </li>
           </Grid>
         </div>

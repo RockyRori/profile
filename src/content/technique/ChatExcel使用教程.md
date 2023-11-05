@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: ChatExcel使用教程
 publishDate: 2023-03-23 15:17:00
 img: /profile/assets/technique/ChatExcel使用教程/封面.jpg
@@ -6,7 +7,6 @@ description: |
   无
 tags:
   - AI
-belonging: technique
 ---
 
 

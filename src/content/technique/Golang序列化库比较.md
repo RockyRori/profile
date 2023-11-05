@@ -1,4 +1,5 @@
 ---
+belonging: technique
 title: Golang序列化库比较
 publishDate: 2023-07-17 14:02:00
 img: /profile/assets/technique/Golang序列化库比较/封面.jpg
@@ -8,7 +9,6 @@ tags:
   - Golang
   - JSON
   - Sonic
-belonging: technique
 ---
 
 #### 背景介绍

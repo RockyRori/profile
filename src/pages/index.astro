@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -18,14 +18,14 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Skills from "../components/Skills.astro";
 
 // Content Fetching: List four most recent work projects
-const selectedCards = 2;
-const pictures = await getCollection("picture");
-var selectedPictures = pictures.slice(
-  Math.floor(Math.random() * (pictures.length - selectedCards + 1)),
+const selectedCard = 2;
+const picture: any = await getCollection("picture");
+var selectedPicture: CollectionEntry<"posts">[] = picture.slice(
+  Math.floor(Math.random() * (picture.length - selectedCard + 1)),
 );
-const techniques = await getCollection("technique");
-var selectedTechniques = techniques.slice(
-  Math.floor(Math.random() * (techniques.length - selectedCards + 1)),
+const technique: any = await getCollection("technique");
+var selectedTechnique: CollectionEntry<"posts">[] = technique.slice(
+  Math.floor(Math.random() * (technique.length - selectedCard + 1)),
 );
 
 // Full Astro Component Syntax:
@@ -77,16 +77,16 @@ var selectedTechniques = techniques.slice(
         <div class="gallery">
           <Grid variant="offset">
             <li>
-              <PostsPreview project={selectedTechniques[0]} />
+              <PostsPreview project={selectedTechnique[0]} />
             </li>
             <li>
-              <PostsPreview project={selectedTechniques[1]} />
+              <PostsPreview project={selectedTechnique[1]} />
             </li>
             <li>
-              <PostsPreview project={selectedPictures[0]} />
+              <PostsPreview project={selectedPicture[0]} />
             </li>
             <li>
-              <PostsPreview project={selectedPictures[1]} />
+              <PostsPreview project={selectedPicture[1]} />
             </li>
           </Grid>
         </div>
@@ -174,8 +174,6 @@ var selectedTechniques = techniques.slice(
     }
   }
 
-  /* ====================================================== */
-
   .section {
     display: grid;
     gap: 2rem;
@@ -197,7 +195,7 @@ var selectedTechniques = techniques.slice(
     top: 0;
     transform: translateY(-75%) translateX(-50%);
     background:
-      url("/assets/backgrounds/noise.png") top center/220px repeat,
+      url("/profile/assets/backgrounds/noise.png") top center/220px repeat,
       var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
       var(--gray-999);
     background-blend-mode: overlay, normal, normal, normal;
